@@ -1,0 +1,92 @@
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+  background-color: #FFFFFF; /* White background for the root */
+  min-height: 100vh; /* Ensure it covers the whole viewport height */
+}
+
+body {
+  background-color: #FFFFFF; /* Apply to body as well for full coverage */
+  color: #333; /* Default text color for readability on white background */
+}
+
+.logo {
+  height: 6em;
+  padding: 1.5em;
+  will-change: filter;
+  transition: filter 300ms;
+}
+.logo:hover {
+  filter: drop-shadow(0 0 2em #646cffaa);
+}
+.logo.react:hover {
+  filter: drop-shadow(0 0 2em #61dafbaa);
+}
+
+@keyframes logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  a:nth-of-type(2) .logo {
+    animation: logo-spin infinite 20s linear;
+  }
+}
+
+.card {
+  padding: 2em;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  margin-bottom: 1em;
+  background-color: #b2beb5; /* Ash gray background for cards */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.card h2 {
+  color: #333; /* Darker color for headings on ash background */
+  margin-bottom: 0.5em;
+}
+
+.card p {
+  color: #555; /* Darker color for general text on ash background */
+}
+
+.card ul {
+  list-style: none;
+  padding: 0;
+}
+
+.card li {
+  background-color: #e0e0e0; /* Light gray background for list items */
+  margin-bottom: 0.5em;
+  padding: 0.75em;
+  border-radius: 4px;
+  text-align: left;
+  cursor: pointer; /* Indicate clickability */
+  transition: background-color 0.3s ease; /* Smooth transition on hover */
+}
+
+.card li:hover {
+  background-color: #d0d0d0; /* Slightly darker on hover */
+}
+
+.card li a {
+  color: #333; /* Darker link text for readability */
+  text-decoration: none; /* Remove underline */
+  display: block; /* Make the whole li clickable via the link */
+}
+
+.card li a:hover {
+  text-decoration: underline; /* Add underline on hover for links */
+}
+
+.read-the-docs {
+  color: #888;
+}

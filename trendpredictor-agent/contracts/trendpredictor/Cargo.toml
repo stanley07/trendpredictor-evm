@@ -1,0 +1,44 @@
+[package]
+name = "trendpredictor"
+version = "0.1.0"
+authors = ["stanley07 <ezebo001@gmail.com>"]
+edition = "2021"
+
+[lib]
+crate-type = ["cdylib", "rlib"]
+
+[profile.release]
+opt-level = 3
+debug = false
+rpath = false
+lto = true
+debug-assertions = false
+codegen-units = 1
+panic = 'abort'
+incremental = false
+overflow-checks = true
+
+[features]
+library = []
+
+[package.metadata.scripts]
+optimize = """docker run --rm -v "$(pwd)":/code \
+  --mount type=volume,source="$(basename "$(pwd)")_cache",target=/target \
+  --mount type=volume,source=registry_cache,target=/usr/local/cargo/registry \
+  cosmwasm/optimizer:0.16.0
+"""
+
+[dependencies]
+cosmwasm-schema = "1.5.11"
+cosmwasm-std = { version = "1.5.11", features = ["staking"] }
+cw-storage-plus = "1.2.0"
+cw2 = "1.1.2"
+
+serde = { version = "1.0.197", default-features = false, features = ["derive"] }
+schemars = "0.8.22"
+thiserror = "1.0.69"
+derive_more = "=0.99.17"
+base64ct = "=1.6.0"
+
+[dev-dependencies]
+cw-multi-test = "0.16.0"
