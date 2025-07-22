@@ -28,7 +28,9 @@ app.use(cors());
 app.use(express.json());
 
 // Serve static files from the React app
-app.use(express.static(path.join(__dirname, '../../frontend/dist')));
+const frontendPath = path.join(__dirname, '../../frontend/dist');
+console.log("DEBUG: Serving frontend from:", frontendPath);
+app.use(express.static(frontendPath));
 
 // Initialize ethers provider and contract
 const provider = new ethers.JsonRpcProvider(process.env.RPC_URL);
@@ -125,9 +127,9 @@ app.get('/get-analysis/:id', async (req, res) => {
 });
 
 // Catch-all to serve React app for any other requests
-app.get('*', (_req, res) => {
-  res.sendFile(path.join(__dirname, '../../frontend/dist/index.html'));
-});
+// app.get('*', (_req, res) => {
+//   res.sendFile(path.join(__dirname, '../../frontend/dist/index.html'));
+// });
 
 app.listen(port, () => {
   console.log(`🚀 TrendPredictor Agent (EVM) running on port ${port}`);
