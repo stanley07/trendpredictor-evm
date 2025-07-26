@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import reactLogo from './assets/react.svg';
 import viteLogo from './assets/vite.svg';
 import './App.css';
@@ -137,7 +137,7 @@ declare global {
 function App() {
   const [currentAccount, setCurrentAccount] = useState<string | null>(null);
   const [contract, setContract] = useState<ethers.Contract | null>(null);
-  const [analysisSummary, setAnalysisSummary] = useState<string>('');
+  
   const [fetchedAnalysis, setFetchedAnalysis] = useState<any>(null);
   const [analysisId, setAnalysisId] = useState<string>('0');
   const [loading, setLoading] = useState<boolean>(false);
@@ -245,25 +245,7 @@ function App() {
     setContract(trendPredictorContract);
   };
 
-  const handleLogAnalysis = async () => {
-    if (!contract || !analysisSummary) {
-      setError("Please connect wallet and enter analysis summary.");
-      return;
-    }
-    setLoading(true);
-    setError(null);
-    try {
-      const tx = await contract.logAnalysis(analysisSummary);
-      await tx.wait();
-      alert("Analysis logged successfully!");
-      setAnalysisSummary('');
-    } catch (e: any) {
-      console.error("Error logging analysis:", e);
-      setError(e.message || "Failed to log analysis.");
-    } finally {
-      setLoading(false);
-    }
-  };
+  
 
   const handleGetAnalysis = async (id: string) => {
     if (!contract || !id) {
